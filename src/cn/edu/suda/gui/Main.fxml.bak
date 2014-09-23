@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<BorderPane id="BorderPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="cn.edu.suda.gui.MainController">
+  <bottom>
+    <HBox alignment="CENTER_LEFT" prefHeight="30.0">
+      <children>
+        <Label fx:id="lb_log" />
+      </children>
+      <padding>
+        <Insets left="10.0" />
+      </padding>
+    </HBox>
+  </bottom>
+  <center>
+    <StackPane prefHeight="150.0" prefWidth="200.0">
+      <children>
+        <VBox fx:id="welcomePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
+          <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to POMA">
+              <effect>
+                <Reflection>
+                  <input>
+                    <DropShadow />
+                  </input>
+                </Reflection>
+              </effect>
+              <font>
+                <Font size="30.0" />
+              </font>
+            </Label>
+            <StackPane prefHeight="250.0">
+              <children>
+                <GridPane fx:id="startPane">
+                  <children>
+                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#startAction" prefHeight="80.0" prefWidth="120.0" text="Get Started" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                      <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@images/start.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </Button>
+                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#consoleAction" prefHeight="60.0" prefWidth="80.0" text="Copyright" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                      <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@images/console.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </Button>
+                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#aboutAction" prefHeight="60.0" prefWidth="80.0" text="About" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                      <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@images/about.png" preserveRatio="false" smooth="false" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </Button>
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+                <VBox fx:id="aboutPane" alignment="CENTER" opacity="0.0" spacing="20.0" visible="false">
+                  <children>
+                    <Label fx:id="lb_info" text="Label" />
+                    <Label fx:id="lb_version" text="Label" />
+                    <Label fx:id="lb_author" text="Label" />
+                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#aboutOkAction" text="OK" />
+                  </children>
+                </VBox>
+                <BorderPane fx:id="logPane" opacity="0.0" visible="false">
+                  <bottom>
+                    <Button mnemonicParsing="false" onAction="#consoleReturnAction" text="Return" BorderPane.alignment="CENTER_RIGHT" />
+                  </bottom>
+                  <center>
+                    <TextArea fx:id="ta_log" editable="false" wrapText="true">
+                      <BorderPane.margin>
+                        <Insets bottom="5.0" fx:id="x2" />
+                      </BorderPane.margin>
+                    </TextArea>
+                  </center>
+                  <padding>
+                    <Insets left="20.0" right="20.0" top="10.0" fx:id="x1" />
+                  </padding>
+                </BorderPane>
+                <BorderPane fx:id="docPane" opacity="0.0" padding="$x1" prefHeight="200.0" prefWidth="200.0" visible="false">
+                  <bottom>
+                    <Button mnemonicParsing="false" onAction="#startReturnAction" text="Return" BorderPane.alignment="CENTER_RIGHT" />
+                  </bottom>
+                  <center>
+                    <WebView fx:id="web" prefHeight="200.0" prefWidth="200.0" BorderPane.margin="$x2" />
+                  </center>
+                  <top>
+                    <VBox alignment="CENTER_LEFT" spacing="5.0">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                          <children>
+                            <Label text="To start, first please load the input files. Click File -&gt; Import Wizard... or" />
+                            <Hyperlink onAction="#docImportWizard" text="Import Wizard" underline="true" />
+                          </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                          <children>
+                            <Label text="Or you can load the" />
+                            <Hyperlink onAction="#docExampleData" text="example data" underline="true" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </VBox>
+                  </top>
+                </BorderPane>
+              </children>
+            </StackPane>
+          </children>
+          <padding>
+            <Insets top="20.0" />
+          </padding>
+        </VBox>
+        <BorderPane fx:id="resultPane" opacity="0.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+          <center>
+            <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" />
+          </center>
+        </BorderPane>
+      </children>
+    </StackPane>
+  </center>
+  <stylesheets>
+    <URL value="@style.css" />
+  </stylesheets>
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#menuAction" text="Import Wizard..." />
+            <MenuItem mnemonicParsing="false" onAction="#docExampleData" text="Load Example" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#menuAction" text="Exit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Analysis">
+          <items>
+            <MenuItem disable="true" mnemonicParsing="false" onAction="#menuAction" text="Overview" fx:id="mi_overview" />
+            <MenuItem disable="true" mnemonicParsing="false" onAction="#menuAction" text="NOD Chart" fx:id="mi_nod" />
+            <MenuItem disable="true" mnemonicParsing="false" onAction="#menuAction" text="Wilcox Chart" fx:id="mi_wilcox" />
+            <MenuItem disable="true" mnemonicParsing="false" onAction="#menuAction" text="DAVID analysis" fx:id="mi_david" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#menuAction" text="Document" />
+            <MenuItem mnemonicParsing="false" onAction="#menuAction" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>

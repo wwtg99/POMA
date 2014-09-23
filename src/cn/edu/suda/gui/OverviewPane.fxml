@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.BorderPane" prefHeight="350.0" prefWidth="580.0" xmlns:fx="http://javafx.com/fxml">
+  <center>
+    <Accordion>
+      <expandedPane>
+        <TitledPane fx:id="x1" animated="false" text="Input">
+          <content>
+            <ScrollPane>
+              <content>
+                <VBox alignment="CENTER" spacing="20.0">
+                  <children>
+                    <HBox alignment="CENTER" spacing="30.0">
+                      <children>
+                        <VBox fx:id="inputGeneBox" prefWidth="250.0" spacing="10.0">
+                          <children>
+                            <Label text="Gene" />
+                          </children>
+                        </VBox>
+                        <VBox fx:id="inputmiRNABox" prefWidth="250.0" spacing="10.0">
+                          <children>
+                            <Label text="miRNA" />
+                          </children>
+                        </VBox>
+                      </children>
+                      <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                      </padding>
+                    </HBox>
+                    <VBox fx:id="interBox" alignment="CENTER">
+                      <children>
+                        <Label text="Gene &amp; miRNA interaction" />
+                      </children>
+                    </VBox>
+                  </children>
+                  <padding>
+                    <Insets left="30.0" />
+                  </padding>
+                </VBox>
+              </content>
+            </ScrollPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <fx:reference source="x1" />
+        <TitledPane animated="false" text="Differential screening">
+          <content>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+              <children>
+                <HBox alignment="CENTER" spacing="20.0">
+                  <children>
+                    <Label fx:id="testLabel" prefWidth="200.0" />
+                    <Hyperlink onAction="#doTest" text="Do T Test" />
+                    <Hyperlink onAction="#doTest" text="Do LSOSS Test" />
+                  </children>
+                </HBox>
+                <HBox alignment="CENTER" spacing="30.0">
+                  <children>
+                    <VBox fx:id="dsGeneBox" prefWidth="250.0" spacing="10.0">
+                      <children>
+                        <Label text="Gene" />
+                      </children>
+                    </VBox>
+                    <VBox id="ds" fx:id="dsmiRNABox" prefWidth="250.0" spacing="10.0">
+                      <children>
+                        <Label text="miRNA" />
+                      </children>
+                    </VBox>
+                  </children>
+                  <padding>
+                    <Insets bottom="10.0" top="10.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </VBox>
+          </content>
+        </TitledPane>
+        <TitledPane animated="false" expanded="false" text="Correlation Test">
+          <content>
+            <VBox fx:id="corBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+              <children>
+                <Button mnemonicParsing="false" onAction="#doCorTest" text="Do Cor Test" />
+                <Label text="Pearson Correlation Test" />
+              </children>
+            </VBox>
+          </content>
+        </TitledPane>
+        <TitledPane animated="false" expanded="false" text="Overlap">
+          <content>
+            <VBox fx:id="overlapBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+              <children>
+                <Button mnemonicParsing="false" onAction="#doOverlap" text="Do overlap" />
+                <Label text="Overlap" />
+              </children>
+            </VBox>
+          </content>
+        </TitledPane>
+        <TitledPane animated="false" expanded="false" text="Result Analysis">
+          <content>
+            <ScrollPane fitToWidth="true">
+              <content>
+                <VBox fx:id="resBox" alignment="CENTER" spacing="10.0">
+                  <padding>
+                    <Insets bottom="10.0" top="10.0" />
+                  </padding>
+                </VBox>
+              </content>
+            </ScrollPane>
+          </content>
+        </TitledPane>
+      </panes>
+    </Accordion>
+  </center>
+</fx:root>

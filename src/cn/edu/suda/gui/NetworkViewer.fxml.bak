@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane id="BorderPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="cn.edu.suda.gui.NetworkViewerController">
+  <center>
+    <ScrollPane fx:id="sp" prefHeight="200.0" prefWidth="200.0" />
+  </center>
+  <right>
+    <VBox fx:id="settingBox" alignment="CENTER" onMouseEntered="#showVBox" onMouseExited="#hideVBox" opacity="0.3" prefWidth="120.0" spacing="10.0">
+      <children>
+        <Label text="Settings">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <Label text="Gene Color" />
+        <ColorPicker id="cp2" fx:id="cp1" onAction="#changeColor" />
+        <Label text="miRNA Color" />
+        <ColorPicker fx:id="cp2" onAction="#changeColor" />
+        <Separator prefWidth="200.0" />
+        <ToggleButton mnemonicParsing="false" onAction="#changeAnimation" selected="true" text="Animation" />
+        <ChoiceBox fx:id="arrangeChoice">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="项 1" />
+              <String fx:value="项 2" />
+              <String fx:value="项 3" />
+            </FXCollections>
+          </items>
+        </ChoiceBox>
+        <Button mnemonicParsing="false" onAction="#arrange" text="Arrange" />
+        <Label text="Zoom" />
+        <Slider fx:id="zoomS" blockIncrement="0.1" majorTickUnit="0.5" max="2.0" min="0.5" onMousePressed="#zoom" orientation="VERTICAL" showTickLabels="true" value="1.0" />
+      </children>
+      <padding>
+        <Insets bottom="10.0" top="10.0" />
+      </padding>
+    </VBox>
+  </right>
+</BorderPane>

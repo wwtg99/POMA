@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.BorderPane" prefHeight="350.0" prefWidth="580.0" xmlns:fx="http://javafx.com/fxml">
+  <center>
+    <GridPane>
+      <children>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <children>
+            <Label text="miRNA:" />
+            <ComboBox fx:id="cb_mirna">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="项 1" />
+                  <String fx:value="项 2" />
+                  <String fx:value="项 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+          </children>
+        </HBox>
+        <ListView id="lv" fx:id="lv_genes" prefHeight="244.0" prefWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="2" />
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <children>
+            <RadioButton mnemonicParsing="false" text="All unique genes">
+              <toggleGroup>
+                <ToggleGroup fx:id="mirna" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="All genes" toggleGroup="$mirna" />
+          </children>
+          <padding>
+            <Insets left="50.0" />
+          </padding>
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+              <children>
+                <TextField fx:id="tf_addgene" prefWidth="200.0" />
+                <Button mnemonicParsing="false" onAction="#addGene" text="Add" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+              <children>
+                <Button mnemonicParsing="false" onAction="#removeGene" text="Remove" />
+                <Button mnemonicParsing="false" text="Clear" />
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <Button contentDisplay="TOP" mnemonicParsing="false" text="Go to DAVID" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+          <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@images/david_logo.jpg" preserveRatio="false" smooth="false" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Button>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </center>
+</fx:root>
